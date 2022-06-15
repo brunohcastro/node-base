@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        USER_ID: ${USER_ID:-1000}
+        GROUP_ID: ${GROUP_ID:-1000}
+    network_mode: host
+    volumes:
+      - .:/app
+      - npm_cache:/home/node/.npm-packages
+
+volumes:
+  npm_cache:
