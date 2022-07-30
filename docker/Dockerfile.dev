@@ -13,13 +13,15 @@ RUN apk update \
         linux-headers \
         coreutils \
         shadow \
+        sudo \
   && usermod -u ${USER_ID} node \
   && groupmod -g ${GROUP_ID} node \
   && mkdir /opt/node-app \
   && chown -R node:node /opt/node-app \
   && mkdir /home/node/.npm-packages \
   && chown -R node:node /home/node/.npm-packages \
-  && npm config set -g prefix "/home/node/.npm-packages"
+  && npm config set -g prefix "/home/node/.npm-packages" \
+  && echo "node ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 ENV PATH="$PATH:/home/node/.npm-packages/bin"
 
