@@ -3,6 +3,8 @@ FROM node:16-alpine
 ARG USER_ID=1000
 ARG GROUP_ID=1000
 
+VOLUME /home/node/.npm_packages
+
 RUN apk update \
     && apk add --no-cache \
         ca-certificates \
@@ -18,7 +20,7 @@ RUN apk update \
   && groupmod -g ${GROUP_ID} node \
   && mkdir /opt/node-app \
   && chown -R node:node /opt/node-app \
-  && mkdir /home/node/.npm-packages \
+  && mkdir -p /home/node/.npm-packages/lib \
   && chown -R node:node /home/node/.npm-packages \
   && npm config set -g prefix "/home/node/.npm-packages" \
   && echo "node ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers

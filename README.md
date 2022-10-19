@@ -21,6 +21,7 @@ $ dbin/mvroot <target>
 # Appends a RUN command to the base image, useful to install new packages
 $ dbin/chimg <command>
 ```
+
 ### Aliases
 
 ```bash
@@ -54,8 +55,8 @@ $ source dbin/local-env
 ### React Native with Expo
 
 ```bash
-# (optional) Add the dbin/ folder to your PATH, if you choose to do this step, all commands will be available without the dbin/ prefix
-$ source dbin/local-env
+# Clone this repository
+$ git clone --depth=1 https://github.com/brunohcastro/node-base.git my-awesome-expo-app
 
 # Install expo-cli
 $ dbin/npm install -g expo-cli
@@ -66,7 +67,7 @@ $ dbin/mkalias expo expo
 # Create a new expo app
 $ dbin/expo init my-app
 
-# Move the contents on the my-app folder over to the root repo folder
+# Move the contents of the my-app folder over to the root repo folder
 $ dbin/mvroot my-app
 
 # Start the application
@@ -76,7 +77,34 @@ $ dbin/expo start
 ### NextJS
 
 ```bash
+# Clone this repository
+$ git clone --depth=1 https://github.com/brunohcastro/node-base.git my-awesome-nextjs-app
+
+# Create the application
 $ dbin/npx create-next-app my-app
+
+# Move it to the root folder
 $ dbin/mvroot my-app
-$ dbin/yarn dev
+
+# Start the application in development mode
+$ dbin/npm run dev
+```
+
+### Create T3 App
+
+```bash
+# Clone this repository
+$ git clone --depth=1 https://github.com/brunohcastro/node-base.git my-awesome-t3-app
+
+# (optional) Remove the .git folder to let the cli create a brand new git repo
+$ rm -rf ./.git
+
+# Create the application
+$ dbin/npx create-t3-app my-app
+
+# Move it to the root folder
+$ dbin/mvroot my-app
+
+# Start the application in development mode
+$ dbin/npm run dev
 ```
